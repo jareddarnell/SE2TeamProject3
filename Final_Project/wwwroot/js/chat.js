@@ -12,7 +12,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 });*/
 
 //Login Event
-document.getElementById("submit").addEventListener("click", function (eventLogin)
+document.getElementById("login").addEventListener("click", function (eventLogin)
 {
     var user = document.getElementById("username").value;
 

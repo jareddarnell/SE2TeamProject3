@@ -1,4 +1,20 @@
 ﻿@page
+<!--LOGIN PAGE START-->
+<!-- The Modal -->
+<div id="logindiv" class="modal">
+
+    <!-- Modal Content -->
+    <form class="modal-content animate" action="/action_page.php">
+
+        <div class="container">
+            <input type="text" placeholder="Enter Username" name="username" id="username" required>
+
+            <button type="button" value="login">Login</button>
+        </div>
+    </form>
+</div>
+<!--LOGIN PAGE END-->
+
 <div class="dropdown">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         Category
@@ -9,5 +25,6 @@
         <a class="dropdown-item" href="#">Link 3</a>
     </div>
 </div>
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>

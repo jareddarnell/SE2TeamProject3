@@ -1,15 +1,19 @@
 ﻿"use strict";
 
+//var connection = new signalR.HubConnectionBuilder().withUrl("http://students.cs.weber.edu/Group123/chatHub").build(); // Server setting
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build(); //Local Setting
 
-/*connection.on("ReceiveMessage", function (user, message) {
-    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = user + " says " + msg;
-    var li = document.createElement("li");
-    li.textContent = encodedMsg;
-    document.getElementById("messagesList").appendChild(li);
-    console.log("test");
-});*/
+connection.start().then(function ()
+{
+
+}).catch(function (err) {
+    return console.error(err.toString));
+} );
+
+connection.on("ReceiveMessage", function (user, message)
+{
+    
+} );
 
 //Login Event
 document.getElementById("login").addEventListener("click", function (eventLogin)
@@ -19,10 +23,10 @@ document.getElementById("login").addEventListener("click", function (eventLogin)
     document.getElementById("logindiv").style.display = "none";
 
     //Call hub method
-    connection.invoke("UserLogin", user).catch(function (err)
+    connection.invoke("UserLogin", user, message).catch(function (err)
     {
         return console.error(err.toString());
-    });
+    } );
 
     eventLogin.preventDefault();
-});
+} );

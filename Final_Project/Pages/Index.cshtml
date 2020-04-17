@@ -15,15 +15,14 @@
 </div>
 <!--LOGIN PAGE END-->
 
-
 <!--USER LIST START-->
 <div class="userlistdiv">
     <ul class="list-group list-group-horizontal" id="userlist">
-
     </ul>
 </div>
 <!--USER LIST END-->
 
+<!--DROPDOWN START-->
 <div class="dropdown">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         Category
@@ -34,6 +33,39 @@
         <a class="dropdown-item" href="#">Link 3</a>
     </div>
 </div>
+<!--DROPDOWN END-->
+
+<!--NEW CATEGORY CREATION BEGIN-->
+<div class="input-group">
+    <input type="text" class="form-control" id="newcategorytext">
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-primary" id="newgroupbutton" onclick="newGroup();">Create New Group</button>
+    </span>
+</div>
+<!--NEW CATEGORY CREATION END-->
+
+<!--ITEM CREATION BEGIN-->
+<div class="input-group">
+    <input type="text" class="form-control" id="newitemtext">
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-primary" id="newitembutton" onclick="newItem();">New Item</button>
+    </span>
+</div>
+<!--ITEM CREATION END-->
+
+<hr />
+
+<!--ITEMS BEGIN-->
+<div class="container" id="items">
+
+    <!--ITEMS GRID BEGIN-->
+    <div class="row">
+
+    </div>
+    <!--ITEMS GRID END-->
+
+</div>
+<!--ITEMS END-->
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>

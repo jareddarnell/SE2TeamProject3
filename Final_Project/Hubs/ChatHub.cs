@@ -27,5 +27,10 @@ namespace GroupOrganizer.Hubs
         {
             await Clients.All.SendAsync("ReceiveGroup", group);
         }
+
+        public async Task SyncItem(string user, string category, string textdata)
+        {
+            await Clients.All.SendAsync("ReceiveItem", user, category, textdata);
+        }
     }
 }

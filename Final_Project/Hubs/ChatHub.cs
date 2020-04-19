@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
-namespace GroupOrganizer.Hubs
+namespace Final_Project
 {
     public class ChatHub : Hub
     {
@@ -12,7 +12,17 @@ namespace GroupOrganizer.Hubs
             Context.Items.Add("userName", user);
 
             //send username and message to all connected clients.
-            await Clients.All.SendAsync("ReceiveMessage", user);
+            //await Clients.All.SendAsync("ReceiveMessage", user);
+            Context.Items["username"] = user;
+
+
+            await Clients.Caller.SendAsync("sendstuff_raw_text", "hello!");
+            Group group = new Group();
+            group.sGroupName = "A group that Brad made";
+            Group.groups.Add(group);
+            await Clients.Caller.SendAsync("sendstuff_1", Group.groups);
+            //await Clients.Caller.SendAsync("sendstuff_2", users);
+
         }
 
         //WORK IN PROGRESS

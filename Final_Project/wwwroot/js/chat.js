@@ -9,6 +9,18 @@ var clientGroups = [];
 
 //connection.start();
 
+connection.on("sendstuff_raw_text", function (paramData) {
+    alert("sendstuff_raw_text - paramData is: " + paramData);
+});
+
+connection.on("sendstuff_1", function (jsonObject) {
+    alert("sendstuff_1 - paramData is: " + JSON.stringify(jsonObject));
+});
+
+
+connection.on("sendstuff_2", function (jsonObject) {
+    alert("sendstuff_2 - paramData is: " + JSON.stringify(jsonObject));
+});
 
 connection.start().then(function ()
 {
@@ -32,9 +44,9 @@ document.getElementById("login").addEventListener("click", function (eventLogin)
     user = document.getElementById("username").value;
 
     document.getElementById("logindiv").style.display = "none";
-
+    alert("Got user " + user);
     //Call hub method
-    connection.invoke("UserLogin", user, message).catch(function (err)
+    connection.invoke("UserLogin", user).catch(function (err)
     {
         return console.error(err.toString());
     } );

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Final_Project
 {
@@ -10,14 +11,17 @@ namespace Final_Project
         /// <summary>
         /// This will hold the user's name
         /// </summary>
+        [JsonPropertyName("sItemName")] 
         public string sItemName { get; set; } = string.Empty;
 
         /// <summary>
         /// This will hold the text the user is writing
         /// </summary>
+        [JsonPropertyName("sItemText")] 
         public string sItemText { get; set; } = string.Empty;
 
-        public bool bIsVisible = true;
+        [JsonPropertyName("bIsVisible")]
+        public bool bIsVisible { get; set; } = true;
 
 
         #endregion

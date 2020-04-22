@@ -8,35 +8,26 @@ namespace Final_Project
     {
         public static List<Group> groups = new List<Group>();
 
-                //Global Variables
+        //Global Variables
         #region variables
+        
         /// <summary>
-        /// This will hold the user's name
+        /// This will hold the group's name
         /// </summary>
-        /// 
         [JsonPropertyName("sGroupName")] 
         public string sGroupName { get; set; } = string.Empty;
 
         /// <summary>
-        /// This will hold the List of Item Objects
-        /// </summary>
-
-
+        ///Holds the list of groups
+        /// </summary
+        public List<Group> lGroupList = new List<Group>();
 
         #endregion
 
         #region methods
-        //Create a List of Items        
-        public List<Group> lGroupList = new List<Group>();
-
 
 
         #endregion
-
-
-
-
-
     }// end class
 }// end namespace
 

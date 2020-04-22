@@ -9,11 +9,11 @@ namespace Final_Project
         public async Task UserLogin(string user)
         {
             //Adds username to context.items, could be useful later for pulling list of users?
-            Context.Items.Add("userName", user);
+            //Context.Items.Add("userName", user);
 
             //send username and message to all connected clients.
             //await Clients.All.SendAsync("ReceiveMessage", user);
-            Context.Items["username"] = user;
+            //Context.Items["username"] = user;
 
 
             await Clients.Caller.SendAsync("sendstuff_raw_text", "hello!");
@@ -25,17 +25,16 @@ namespace Final_Project
 
         }
 
-        //WORK IN PROGRESS
-        /*public async Task GetUsers(string user)
+        public async Task NewGroup(string group)
         {
-            Context.Items.
+            Group new_group = new Group
+            {
+                sGroupName = group
+            };
+            
+            Group.groups.Add(new_group);
 
-            await Clients.User(user).SendAsync("GetUsers", users);
-        }*/
-
-        public async Task ReceiveGroup(string group)
-        {
-            await Clients.All.SendAsync("ReceiveGroup", group);
+            await Clients.All.SendAsync("ReceiveGroup", Group.groups);
         }
 
         public async Task SyncItem(string user, string category, string textdata)

@@ -5,11 +5,8 @@
     <title>Group123</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
     <script src="~/js/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/chat.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <!--LOGIN PAGE START-->
 <!-- The Modal -->
@@ -33,11 +30,10 @@
     <!--USER LIST END-->
     <!--DROPDOWN START-->
     <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="dropdownmenu">
             Category
         </button>
         <div class="dropdown-menu">
-
         </div>
     </div>
     <!--DROPDOWN END-->
@@ -45,7 +41,7 @@
     <div class="input-group">
         <input type="text" class="form-control" id="newcategorytext">
         <span class="input-group-btn">
-            <button type="button" class="btn btn-primary" id="newgroupbutton" onclick="newGroup();">Create New Group</button>
+            <button type="button" class="btn btn-primary" id="newgroupbutton" onclick="newGroup();">New Group</button>
         </span>
     </div>
     <!--NEW CATEGORY CREATION END-->
@@ -64,7 +60,7 @@
     <div class="container" id="items">
 
         <!--ITEMS GRID BEGIN-->
-        <div class="row">
+        <div class="row" id="rowitems">
 
         </div>
         <!--ITEMS GRID END-->

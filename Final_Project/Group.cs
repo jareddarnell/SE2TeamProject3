@@ -7,10 +7,11 @@ namespace Final_Project
     public class Group
     {
         public static List<Group> groups = new List<Group>();
+        public List<Items> items = new List<Items>();
 
         //Global Variables
         #region variables
-        
+
         /// <summary>
         /// This will hold the group's name
         /// </summary>

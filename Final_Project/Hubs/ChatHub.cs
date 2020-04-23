@@ -16,12 +16,14 @@ namespace Final_Project
             //Context.Items["username"] = user;
 
 
-            await Clients.Caller.SendAsync("sendstuff_raw_text", "hello!");
-            Group group = new Group();
-            group.sGroupName = "A group that Brad made";
-            Group.groups.Add(group);
-            await Clients.Caller.SendAsync("sendstuff_1", Group.groups);
+            //await Clients.Caller.SendAsync("sendstuff_raw_text", "hello!");
+            //Group group = new Group();
+            //group.sGroupName = "A group that Brad made";
+            //Group.groups.Add(group);
+            //await Clients.All.SendAsync("sendstuff_1", Group.groups);
             //await Clients.Caller.SendAsync("sendstuff_2", users);
+
+            await Clients.Caller.SendAsync("InitialGroups", Group.groups);
 
         }
 
@@ -37,9 +39,10 @@ namespace Final_Project
             await Clients.All.SendAsync("ReceiveGroup", Group.groups);
         }
 
-        public async Task SyncItem(string user, string category, string textdata)
+        /*public async Task NewItem(string user, string group, string textdata)
         {
-            await Clients.All.SendAsync("ReceiveItem", user, category, textdata);
-        }
+
+            await Clients.All.SendAsync("ReceiveItem", /Group.groups.items);
+        }*/
     }
 }

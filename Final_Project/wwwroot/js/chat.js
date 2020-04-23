@@ -15,29 +15,50 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 
-connection.on("sendstuff_raw_text", function (paramData) {
-    alert("sendstuff_raw_text - paramData is: " + paramData);
+connection.on("ReceiveGroup", function (jsonObject) {
+    var div = document.querySelector('.dropdown-menu');
+
+    var tempGroups = JSON.parse(JSON.stringify(jsonObject));
+
+    for (var i in tempGroups) {
+        clientGroups[i] = tempGroups[i].sGroupName;
+        i++;
+    }
+
+    if (clientGroups.length == 0) {
+        clientGroups.forEach(group => {
+            div.innerHTML += `<a class="dropdown-item" href="#">${group}</a>`;
+        });
+    }
+    else {
+        div.innerHTML += `<a class="dropdown-item" href="#">${clientGroups[clientGroups.length - 1]}</a>`;
+    }
 });
 
-connection.on("sendstuff_1", function (jsonObject) {
-    alert("sendstuff_1 - paramData is: " + JSON.stringify(jsonObject));
+connection.on("ReceiveItem", function (jsonObject) {
+    var div = document.getElementById("rowitems");
+
+    var dropdown = document.getElementById("dropdownmenu");
+    var currentGroup = dropdown.options[dropdown.selectedIndex].value;
+
+    var itemName = JSON.parse(jsonObject).name;
 });
 
+//Populate groups for late-joining user
+connection.on("InitialGroups", function (jsonObject) {
+    var div = document.querySelector('.dropdown-menu');
 
-connection.on("sendstuff_2", function (jsonObject) {
-    alert("sendstuff_2 - paramData is: " + JSON.stringify(jsonObject));
-});
+    var tempGroups = JSON.parse(JSON.stringify(jsonObject));
 
-connection.on("ReceiveGroup"), function (jsonObject) {
-    debugger;
-    div = document.querySelector('.dropdown-menu');
-    clientGroups = JSON.parse('{"sGroupName"}');
+    for (var i in tempGroups) {
+        clientGroups[i] = tempGroups[i].sGroupName;
+        i++;
+    }
 
     clientGroups.forEach(group => {
         div.innerHTML += `<a class="dropdown-item" href="#">${group}</a>`;
     });
-}
-
+});
 
 //Login Event
 function login() {

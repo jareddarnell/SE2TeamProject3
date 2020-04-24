@@ -20,9 +20,10 @@ connection.on("ReceiveGroup", function (jsonObject) {
     var div = document.querySelector('.dropdown-menu');
 
     var tempGroups = JSON.parse(JSON.stringify(jsonObject));
-
+    clearCards();
     for (var i in tempGroups) {
         clientGroups[i] = tempGroups[i].sGroupName;
+        createCards(clientGroups[i]);
         i++;
     }
 
@@ -103,3 +104,29 @@ function newItem()
 $(".dropdown-menu li a").click(function () {
     alert("I got here" + $(this).text());
 });
+
+//show cards at bottom
+function createCards(group) {
+
+    var card = document.createElement("div");
+    var cardBorder = document.createElement("div");
+    var cardHeader = document.createElement("h2");
+    var cardBody = document.createElement("div");
+    var cardHeaderText = document.createTextNode(group);
+
+    cardHeader.appendChild(cardHeaderText);
+    cardHeader.appendChild(cardBody).classList.add("h3");
+    cardBorder.appendChild(cardHeader);
+    card.appendChild(cardBorder).classList.add("card");
+    document.getElementById("rowitems").appendChild(card).classList.add("container");
+
+}
+//clear old cards
+function clearCards() {
+    document.getElementById("rowitems").innerHTML = "";
+}
+
+function createCardItems() {
+    var cardItem = document.createElement("p")
+    document.getElementById(cardBody).appendChild(cardItem);
+}

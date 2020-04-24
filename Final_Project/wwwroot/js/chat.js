@@ -17,20 +17,33 @@ connection.start().then(function () {
 });
 
 connection.on("ReceiveGroup", function (jsonObject) {
-    var div = document.querySelector('.dropdown-menu');
+    var ul = document.querySelector('.dropdown-menu');
     debugger;
     var tempGroups = JSON.parse(JSON.stringify(jsonObject));
     clearCards();
     for (var i in tempGroups) {
         clientGroups[i] = tempGroups[i].sGroupName;
         createCards(clientGroups[i]);
+
+        var li = document.createElement("li");
+        li.onclick = function () {
+            alert("I got here" + $(this).text());
+        }
+        var a = document.createElement("a");
+        a.setAttribute("href", "#");
+        a.innerText = `${ clientGroups[i] }`;
+        li.appendChild(a);
+        ul.appendChild(li);
         i++;
     }
 
-    var newHTML = document.createElement('li');
-    newHTML.innerHTML = `<a href="#">${clientGroups[clientGroups.length - 1]}</a>`;
 
-    div.appendChild(newHTML);
+
+
+    //var newHTML = document.createElement('li');
+    //newHTML.innerHTML = `<a href="#">${clientGroups[clientGroups.length - 1]}</a>`;
+
+    //div.appendChild(newHTML);
 });
 
 connection.on("ReceiveItems", function (jsonObject) {

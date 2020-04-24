@@ -61,7 +61,7 @@ namespace Final_Project
 
             Group.groups[i].items.Add(new_item);
 
-            await Clients.All.SendAsync("ReceiveItem", Group.groups);
+            await Clients.All.SendAsync("ReceiveItems", Group.groups);
         }
     }
 }

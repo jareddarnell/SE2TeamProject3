@@ -18,7 +18,7 @@ connection.start().then(function () {
 
 connection.on("ReceiveGroup", function (jsonObject) {
     var div = document.querySelector('.dropdown-menu');
-
+    debugger;
     var tempGroups = JSON.parse(JSON.stringify(jsonObject));
     clearCards();
     for (var i in tempGroups) {
@@ -27,22 +27,16 @@ connection.on("ReceiveGroup", function (jsonObject) {
         i++;
     }
 
-    if (clientGroups.length == 0) {
-        clientGroups.forEach(group => {
-            div.innerHTML += `<li><a class="dropdown-item" href="#">${group}</a></li>`;
-        });
-    }
-    else {
-        //<li><a href="#">Option 1</a></li>
-        div.innerHTML += `<li><a href="#">${clientGroups[clientGroups.length - 1]}</a></li>`;
-    }
+    var newHTML = document.createElement('li');
+    newHTML.innerHTML = `<a href="#">${clientGroups[clientGroups.length - 1]}</a>`;
+
+    div.appendChild(newHTML);
 });
 
-connection.on("ReceiveItem", function (jsonObject) {
+connection.on("ReceiveItems", function (jsonObject) {
     var div = document.getElementById("rowitems");
 
-    var dropdown = document.getElementById("dropdownmenu");
-    var currentGroup = dropdown.options[dropdown.selectedIndex].value;
+    var currentGroup = selectedDropdown;
 
     var tempGroups = JSON.parse(JSON.stringify(jsonObject));
     debugger;
@@ -93,9 +87,7 @@ function newItem()
 {
     debugger;
     var itemName = document.getElementById("newitemtext").value;
-
-    var dropdown = document.getElementById("dropdownmenu");
-    var groupName = "";
+    var groupName = selectedDropdown;
 
     connection.invoke("NewItem", user, itemName, groupName).catch(err => console.error(err.toString()));
 }

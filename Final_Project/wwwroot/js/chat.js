@@ -28,11 +28,11 @@ connection.on("ReceiveGroup", function (jsonObject) {
 
     if (clientGroups.length == 0) {
         clientGroups.forEach(group => {
-            div.innerHTML += `<a class="dropdown-item" href="#">${group}</a>`;
+            div.innerHTML += `<li><a class="dropdown-item" href="#">${group}</a></li>`;
         });
     }
     else {
-        div.innerHTML += `<a class="dropdown-item" href="#">${clientGroups[clientGroups.length - 1]}</a>`;
+        div.innerHTML += `<li><a class="dropdown-item" href="#">${clientGroups[clientGroups.length - 1]}</a></li>`;
     }
 });
 
@@ -94,7 +94,7 @@ function newItem()
 }
 
 
-$(".dropdown").on("show.bs.dropdown", function (dropdownEvent) {
-    //debugger;
-    selectedDropdown = $(dropdownEvent.relatedTarget).text();
+$(".dropdown-item li a").click( function() {
+    debugger;
+    selectedDropdown = $(this).text();
 });

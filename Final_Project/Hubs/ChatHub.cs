@@ -24,7 +24,6 @@ namespace Final_Project
             //await Clients.Caller.SendAsync("sendstuff_2", users);
 
             await Clients.Caller.SendAsync("InitialGroups", Group.groups);
-
         }
 
         public async Task NewGroup(string group)
@@ -39,10 +38,30 @@ namespace Final_Project
             await Clients.All.SendAsync("ReceiveGroup", Group.groups);
         }
 
-        /*public async Task NewItem(string user, string group, string textdata)
+        public async Task NewItem(string user, string itemName, string group)
         {
+            Item new_item = new Item
+            {
+                sItemName = itemName,
+                sItemText = "",
+                sUserName = user,
+                sItemGroup = group
+            };
 
-            await Clients.All.SendAsync("ReceiveItem", /Group.groups.items);
-        }*/
+            int i = 0;
+            foreach (Group element in Group.groups)
+            {
+                if(string.Equals(element.sGroupName, group))
+                {
+                    break;
+                }
+
+                i++;
+            }
+
+            Group.groups[i].items.Add(new_item);
+
+            await Clients.All.SendAsync("ReceiveItem", Group.groups);
+        }
     }
 }

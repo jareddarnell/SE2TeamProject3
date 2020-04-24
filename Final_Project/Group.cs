@@ -7,7 +7,7 @@ namespace Final_Project
     public class Group
     {
         public static List<Group> groups = new List<Group>();
-        public List<Items> items = new List<Items>();
+        public List<Item> items = new List<Item>();
 
         //Global Variables
         #region variables
@@ -17,11 +17,6 @@ namespace Final_Project
         /// </summary>
         [JsonPropertyName("sGroupName")] 
         public string sGroupName { get; set; } = string.Empty;
-
-        /// <summary>
-        ///Holds the list of groups
-        /// </summary
-        public List<Group> lGroupList = new List<Group>();
 
         #endregion
 

@@ -92,3 +92,9 @@ function newItem()
 
     connection.invoke("NewItem", user, itemName, group).catch(err => console.error(err.toString()));
 }
+
+
+$(".dropdown").on("show.bs.dropdown", function (dropdownEvent) {
+    //debugger;
+    selectedDropdown = $(dropdownEvent.relatedTarget).text();
+});

@@ -62,7 +62,8 @@ connection.on("InitialGroups", function (jsonObject) {
     }
 
     clientGroups.forEach(group => {
-        div.innerHTML += `<a class="dropdown-item" href="#">${group}</a>`;
+
+        div.innerHTML += `<li><a href="#">${group}</a></li>`;
     });
 });
 
@@ -94,7 +95,6 @@ function newItem()
 }
 
 
-$(".dropdown-item li a").click( function() {
-    debugger;
-    selectedDropdown = $(this).text();
+$(".dropdown-menu li a").click(function () {
+    alert("I got here" + $(this).text());
 });

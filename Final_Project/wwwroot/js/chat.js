@@ -32,7 +32,8 @@ connection.on("ReceiveGroup", function (jsonObject) {
         });
     }
     else {
-        div.innerHTML += `<li><a class="dropdown-item" href="#">${clientGroups[clientGroups.length - 1]}</a></li>`;
+        //<li><a href="#">Option 1</a></li>
+        div.innerHTML += `<li><a href="#">${clientGroups[clientGroups.length - 1]}</a></li>`;
     }
 });
 
@@ -89,9 +90,13 @@ function newGroup()
 
 function newItem()
 {
+    debugger;
     var itemName = document.getElementById("newitemtext").value;
 
-    connection.invoke("NewItem", user, itemName, group).catch(err => console.error(err.toString()));
+    var dropdown = document.getElementById("dropdownmenu");
+    var groupName = "";
+
+    connection.invoke("NewItem", user, itemName, groupName).catch(err => console.error(err.toString()));
 }
 
 
